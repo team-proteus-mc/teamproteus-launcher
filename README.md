@@ -1,3 +1,9 @@
+# Team Proteus Launcher
+
+Launcher based off of Betacraft Launcher specifically for the Team Proteus client
+
+- Discord: https://discord.gg/eKemcyUKwR
+
 # Betacraft Launcher
 
 Betacraft launcher aims to provide easy access to old Minecraft versions and improve the overall game experience.
