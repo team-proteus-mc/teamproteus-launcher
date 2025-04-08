@@ -16,7 +16,7 @@ public class Release {
 	public static ArrayList<Release> versions = new ArrayList<Release>();
 
 	public enum VersionRepository {
-		BETACRAFT("http://files.betacraft.uk/launcher/assets/version_list.txt"),
+		BETACRAFT("https://raw.githubusercontent.com/team-proteus-mc/team-proteus-clients/main/clientlist.txt"),
 		CUSTOM(null);
 
 		private String link;
