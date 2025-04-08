@@ -27,22 +27,22 @@ public class BC {
 	}
 
 	public static String windowsPath() {
-		if (portable) return prefBC() + "\\.betacraft\\";
-		return System.getenv("APPDATA") + "\\.betacraft\\";
+		if (portable) return prefBC() + "\\.teamproteus\\";
+		return System.getenv("APPDATA") + "\\.teamproteus\\";
 	}
 
 	public static String path() {
 		String folder = null;
 		if (OS.isLinux()) {
-			folder = System.getProperty("user.home") + "/.betacraft/";
-			if (portable) folder = prefBC() + "/.betacraft/";
+			folder = System.getProperty("user.home") + "/.teamproteus/";
+			if (portable) folder = prefBC() + "/.teamproteus/";
 		} else if (OS.isMac()) {
 			folder = System.getProperty("user.home") + "/Library/Application Support/betacraft/";
-			if (portable) folder = prefBC() + "/betacraft/";
+			if (portable) folder = prefBC() + "/teamproteus/";
 		} else {
 			System.out.println("Your operating system is not supported.");
 			JOptionPane.showMessageDialog(Window.mainWindow, "Your operating system is not supported ;(", "I'm sorry, but", JOptionPane.WARNING_MESSAGE);
-			folder = prefBC() + "/betacraft/";
+			folder = prefBC() + "/teamproteus/";
 		}
 
 		File betacraft = new File(folder);
