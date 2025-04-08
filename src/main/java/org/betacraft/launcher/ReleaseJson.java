@@ -36,7 +36,7 @@ public class ReleaseJson implements VersionInfo {
 		this.properties = new PropertyFile(json);
 		
 		if (url == null) {
-			this.jsonUrl = "http://files.betacraft.uk/launcher/assets/jsons/" + this.getVersion() + ".info";
+			this.jsonUrl = "https://raw.githubusercontent.com/team-proteus-mc/team-proteus-clients/main/clients/jsons/" + this.getVersion() + ".info";
 		} else {
 			this.jsonUrl = url;
 		}
