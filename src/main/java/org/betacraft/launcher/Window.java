@@ -32,14 +32,16 @@ import uk.betacraft.auth.jsons.microsoft.DeviceCodeResponse;
 public class Window extends JFrame implements ActionListener, LanguageElement {
 
 	public static JLabel selectedInstanceDisplay = null;
+	public static String playInstanceDisplay = null;
 	public static JButton playButton, selectVersionButton, settingsButton, langButton;
-	public static JButton tabchangelog, tabinstances, tabservers;
+	public static JButton tabinstances;
 	public static JLabel nicktext;
 	public static JTextField nick_input;
 	public static JButton loginButton = null;
 	public static BottomPanel bottomPanel = null;
 	public static Component centerPanel = null;
 	public static Window mainWindow = null;
+	public static int playButtonWidth;
 
 	public static ModsRepository modsRepo = null;
 	public static InstanceList instanceList = null;
@@ -64,20 +66,23 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 		}
 
 		mainWindow = this;
-		setMinimumSize(new Dimension(800, 480));
-		setPreferredSize(new Dimension(800, 480));
+		setMinimumSize(new Dimension(500, 200));
+		setPreferredSize(new Dimension(500, 200));
+		setResizable(false);
 		setTitle(Lang.WINDOW_TITLE + (BC.nightly ? " [NIGHTLY]" : ""));
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 
 		// Initialize components
 		loginButton = new JButton(Lang.LOGIN_BUTTON);
-		playButton = new JButton(Lang.WINDOW_PLAY);
-		selectedInstanceDisplay = new JLabel(Launcher.currentInstance.name + " [" + Launcher.currentInstance.version + "]");
+		playButton = new JButton(Lang.WINDOW_PLAY + " ("+Launcher.currentInstance.name+")");
+		selectedInstanceDisplay = new JLabel("Version: " + Launcher.currentInstance.version);
 		selectVersionButton = new JButton(Lang.WINDOW_SELECT_VERSION);
 		nick_input = new JTextField(Launcher.getNickname(), 16);
 		settingsButton = new JButton(Lang.WINDOW_OPTIONS);
 		langButton = new JButton(Lang.WINDOW_LANGUAGE);
+
+		positionButtons();
 
 		nick_input.setEnabled(false);
 		nick_input.setText(Lang.LOGGING_IN);
@@ -118,12 +123,12 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 				}
 			}
 		});
-
+		tabinstances = new JButton(Lang.TAB_INSTANCES);
 		bottomPanel = new BottomPanel();
 		String tabname = BC.SETTINGS.getProperty("tab");
 		Tab tab = tabname.equals("") ? Tab.CHANGELOG : Tab.valueOf(tabname.toUpperCase());
 		setTab(tab);
-		this.add(Window.bottomPanel, BorderLayout.SOUTH);
+		this.add(Window.bottomPanel, BorderLayout.CENTER);
 
 		JPanel stuffz = new JPanel() {
 			public void update(final Graphics graphics) {
@@ -135,17 +140,21 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 			}
 		};
 		stuffz.setLayout(new GridBagLayout());
-		tabchangelog = new JButton(Lang.TAB_CHANGELOG);
-		tabinstances = new JButton(Lang.TAB_INSTANCES);
-		tabservers = new JButton(Lang.TAB_SERVERS);
+		
 		positionButtons();
+
+		/*
+		tabchangelog = new JButton(Lang.TAB_CHANGELOG);*/
+		
+		/*tabservers = new JButton(Lang.TAB_SERVERS);
+		
 
 		tabchangelog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTab(Tab.CHANGELOG);
 			}
 		});
-
+		*/
 		tabinstances.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (Window.tab != Tab.INSTANCES) {
@@ -155,12 +164,14 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 				}
 			}
 		});
-
+		/*
 		tabservers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTab(Tab.SERVER_LIST);
 			}
 		});
+
+		*/
 
 		GridBagConstraints constr = new GridBagConstraints();
 		constr.fill = GridBagConstraints.BOTH;
@@ -169,16 +180,9 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 		constr.gridx = 0;
 		constr.weightx = 0.0;
 		constr.gridwidth = 1;
-		constr.insets = new Insets(0, 2, 0, 2);
-		stuffz.add(tabchangelog, constr);
+		constr.insets = new Insets(0, 1, 0, 1);
 
-		constr.gridx = 1;
-		stuffz.add(tabinstances, constr);
-
-		constr.gridx = 2;
-		stuffz.add(tabservers, constr);
-
-		this.add(stuffz, BorderLayout.NORTH);
+		//this.add(stuffz, BorderLayout.NORTH);
 
 		// Buttons are being added in BottomPanel.paintComponent()
 		// because it will put them above the bottom panel's background? (TODO verify)
@@ -214,13 +218,13 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 		else
 			loginButton.setText(Lang.LOGOUT_BUTTON);
 
-		playButton.setText(Lang.WINDOW_PLAY);
+		playButton.setText(Lang.WINDOW_PLAY + " ("+Launcher.currentInstance.name+")");
 		selectVersionButton.setText(Lang.WINDOW_SELECT_VERSION);
 		settingsButton.setText(Lang.WINDOW_OPTIONS);
 		langButton.setText(Lang.WINDOW_LANGUAGE);
-		tabchangelog.setText(Lang.TAB_CHANGELOG);
+		//tabchangelog.setText(Lang.TAB_CHANGELOG);
 		tabinstances.setText(Lang.TAB_INSTANCES);
-		tabservers.setText(Lang.TAB_SERVERS);
+		//tabservers.setText(Lang.TAB_SERVERS);
 
 		positionButtons();
 		if (mainWindow.isVisible())
@@ -241,7 +245,7 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 	}
 
 	public static void setTab(Tab tab) {
-
+		/*
 		if (tab == Tab.CHANGELOG) {
 			new Thread() {
 				public void run() {
@@ -265,6 +269,7 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 				}
 			}.start();
 		}
+		*/
 	}
 
 	public static void positionButtons() {
@@ -280,14 +285,21 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 		if (largest.getPreferredSize().getWidth() < copyInstanc.getPreferredSize().getWidth()) {
 			largest = copyInstanc;
 		}
+
+		Dimension dimension = new Dimension();
 		selectVersionButton.setPreferredSize(largest.getPreferredSize());
 		selectVersionButton.setSize(largest.getPreferredSize());
 		langButton.setPreferredSize(largest.getPreferredSize());
 		langButton.setSize(largest.getPreferredSize());
 		settingsButton.setPreferredSize(largest.getPreferredSize());
 		settingsButton.setSize(largest.getPreferredSize());
+		dimension.setSize(loginButton.getPreferredSize().getWidth() + nick_input.getPreferredSize().getWidth() + 2 + BottomPanel.paddingx*2, playButton.getPreferredSize().getHeight());
+		playButton.setPreferredSize(dimension);
+		playButton.setSize(dimension);
+		//playButtonWidth = loginButton.getPreferredSize().width + nick_input.getPreferredSize().width + 2;
+		
 
-		JButton copyTabChan = new JButton(tabchangelog.getText());
+		/* JButton copyTabChan = new JButton(tabchangelog.getText());
 		JButton copyTabInst = new JButton(tabinstances.getText());
 		JButton copyTabServ = new JButton(tabservers.getText());
 		largest = copyTabServ;
@@ -297,19 +309,21 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 		if (largest.getPreferredSize().getWidth() < copyTabChan.getPreferredSize().getWidth()) {
 			largest = copyTabChan;
 		}
+		
 		tabchangelog.setPreferredSize(largest.getPreferredSize());
 		tabchangelog.setSize(largest.getPreferredSize());
 		tabinstances.setPreferredSize(largest.getPreferredSize());
 		tabinstances.setSize(largest.getPreferredSize());
 		tabservers.setPreferredSize(largest.getPreferredSize());
 		tabservers.setSize(largest.getPreferredSize());
+		*/
 	}
 
 	public static void quit(boolean close) {
 		if (mainWindow != null) mainWindow.setVisible(false);
 		if (mainWindow != null) mainWindow.dispose();
 		Util.saveAccounts();
-		BC.SETTINGS.setProperty("tab", tab.name());
+		//BC.SETTINGS.setProperty("tab", tab.name());
 		BC.SETTINGS.flushToDisk();
 		if (close) {
 			for (Thread t : Launcher.totalThreads) {

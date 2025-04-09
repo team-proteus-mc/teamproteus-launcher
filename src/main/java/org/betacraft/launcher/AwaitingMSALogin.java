@@ -60,7 +60,7 @@ public class AwaitingMSALogin extends JFrame {
 		
 		this.setIconImage(Window.img);
 		setTitle(Lang.LOGIN_MICROSOFT_TITLE);
-		setResizable(true);
+		setResizable(false);
 		this.setMinimumSize(new Dimension(360, 200));
 
 		GridBagConstraints constr = new GridBagConstraints();

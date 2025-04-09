@@ -346,7 +346,8 @@ public class Launcher {
 
 	public static void setInstance(Instance instance) {
 		Launcher.currentInstance = instance;
-		Window.selectedInstanceDisplay.setText(Launcher.currentInstance.name + " [" + Launcher.currentInstance.version + "]");
+		Window.selectedInstanceDisplay.setText("Version: " + Launcher.currentInstance.version);
+		Window.playButton.setText(Lang.WINDOW_PLAY + " ("+Launcher.currentInstance.name+")");
 		BC.SETTINGS.setProperty("lastInstance", Launcher.currentInstance.name);
 		BC.SETTINGS.flushToDisk();
 	}
