@@ -217,7 +217,7 @@ public class Release {
 		public void setEntry(String entry, String value) {}
 
 		public DownloadResult downloadJson() {
-			return Launcher.download("http://files.betacraft.uk/launcher/assets/jsons/" + this.getVersion() + ".info", getInfoFile());
+			return Launcher.download("https://raw.githubusercontent.com/team-proteus-mc/team-proteus-clients/main/clients/jsons/" + this.getVersion() + ".info", getInfoFile());
 		}
 	}
 

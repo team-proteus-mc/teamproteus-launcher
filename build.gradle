@@ -7,12 +7,22 @@ plugins {
 targetCompatibility = 7;
 sourceCompatibility = 7;
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+}
+
 repositories {
 	mavenCentral()
 	maven {
 		url = uri("https://repo.blueberrymc.net/repository/maven-releases/")
 	}
 }
+
+
 
 jar {
 	from {
@@ -31,7 +41,7 @@ task osxBuildApp {
 	dependsOn jar
 
 	doLast {
-		def dist = "${buildDir}/app/BetaCraft Launcher.app"
+		def dist = "${buildDir}/app/Team Proteus Launcher.app"
 		mkdir("$dist/Contents/MacOS")
 		mkdir("$dist/Contents/Resources")
 		copy {
@@ -43,7 +53,7 @@ task osxBuildApp {
 			into "$dist/Contents"
 		}
 		copy {
-			from "${buildDir}/../src/main/app/BetaCraft Launcher"
+			from "${buildDir}/../src/main/app/Team Proteus Launcher"
 			into "$dist/Contents/MacOS"
 		}
 		copy {
@@ -56,7 +66,7 @@ task osxBuildApp {
 		}
 		exec {
 			workingDir "${buildDir}/app/"
-			commandLine('zip', '-rvFSX', "../libs/BetaCraft-Launcher-macOS.zip", '.')
+			commandLine('zip', '-rvFSX', "../libs/TeamProteus-Launcher-macOS.zip", '.')
 		}
 	}
 }
@@ -65,5 +75,5 @@ dependencies {
 	runtime 'com.google.code.gson:gson:2.10.1'
 
 	compileOnly 'com.google.code.gson:gson:2.10.1'
-	compileOnly 'net.arikia.dev:discord-rpc-without-jna:1.7.0'
+	compileOnly files('libs/discord_rpc.jar')//'net.arikia.dev:discord-rpc-without-jna:1.7.0'
 }

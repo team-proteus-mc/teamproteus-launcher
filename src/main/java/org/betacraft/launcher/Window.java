@@ -33,7 +33,7 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 
 	public static JLabel selectedInstanceDisplay = null;
 	public static JButton playButton, selectVersionButton, settingsButton, langButton;
-	public static JButton tabchangelog, tabinstances;
+	public static JButton tabchangelog, tabinstances, tabservers;
 	public static JLabel nicktext;
 	public static JTextField nick_input;
 	public static JButton loginButton = null;
@@ -137,6 +137,7 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 		stuffz.setLayout(new GridBagLayout());
 		tabchangelog = new JButton(Lang.TAB_CHANGELOG);
 		tabinstances = new JButton(Lang.TAB_INSTANCES);
+		tabservers = new JButton(Lang.TAB_SERVERS);
 		positionButtons();
 
 		tabchangelog.addActionListener(new ActionListener() {

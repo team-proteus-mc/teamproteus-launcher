@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.JTextComponent;
 
+import org.betacraft.launcher.AwaitingMSALogin.CheckThread;
 import org.betacraft.launcher.InstanceSettings.OptionsPanel;
 
 import uk.betacraft.auth.Credentials;
@@ -42,6 +46,17 @@ public class AwaitingMSALogin extends JFrame {
 		this.devcode = devCode;
 		this.pass = System.currentTimeMillis() + time*1000;
 		this.interval = interval;
+		final String urlString = url;
+
+		class OpenUrlAction implements ActionListener {
+			@Override 
+			public void actionPerformed(ActionEvent e) {
+				try {
+					final URI uri = new URI(urlString);
+					open(uri);
+				} catch (URISyntaxException use) {}
+			}
+		}
 		
 		this.setIconImage(Window.img);
 		setTitle(Lang.LOGIN_MICROSOFT_TITLE);
@@ -62,8 +77,8 @@ public class AwaitingMSALogin extends JFrame {
 
 		JLabel label1 = new JLabel(Lang.LOGIN_MICROSOFT_CODE_LINE1);
 		label1.setForeground(Color.LIGHT_GRAY);
-		JTextField tf = new JTextField(this.url);
-		tf.setEditable(false);
+		JButton tf = new JButton(urlString);
+		//tf.setEditable(false);
 		tf.addMouseListener(autofocus);
 		JLabel label2 = new JLabel(Lang.LOGIN_MICROSOFT_CODE_LINE2);
 		label2.setForeground(Color.LIGHT_GRAY);
@@ -78,6 +93,7 @@ public class AwaitingMSALogin extends JFrame {
 		tp.setFont(new Font("Courier New", Font.BOLD, 20));
 		tp.setDisabledTextColor(Color.WHITE);
 		tp.addMouseListener(autofocus);
+
 
 		panel.add(label1, constr);
 		constr.gridy++;
@@ -106,6 +122,8 @@ public class AwaitingMSALogin extends JFrame {
 				dispose();
 			}
 		});
+
+		tf.addActionListener(new OpenUrlAction());
 
 		cancelButton.setBackground(Color.WHITE);
 		cancel.add(cancelButton, constr);
@@ -174,4 +192,12 @@ public class AwaitingMSALogin extends JFrame {
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
 	};
+
+	private static void open(URI uri) {
+		if (java.awt.Desktop.isDesktopSupported()) {
+			try {
+				java.awt.Desktop.getDesktop().browse(uri);
+			} catch (IOException e) { }
+		}
+	}
 }

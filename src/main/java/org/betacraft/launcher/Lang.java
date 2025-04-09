@@ -554,7 +554,7 @@ public class Lang extends JFrame implements LanguageElement {
 	public static String WINDOW_SELECT_VERSION = "Select version";
 	public static String WINDOW_LANGUAGE = "Language";
 	public static String WINDOW_OPTIONS = "Edit instance";
-	public static String WINDOW_TITLE = "BetaCraft Launcher v" + Launcher.VERSION;
+	public static String WINDOW_TITLE = "Team Proteus Launcher v" + Launcher.VERSION;
 	public static String WINDOW_DOWNLOADING = "Downloading ...";
 	public static String WINDOW_DOWNLOADING_RESOURCE = "Downloading: %s";
 	public static String PACKING_MOD = "Packing mod ...";
@@ -595,8 +595,8 @@ public class Lang extends JFrame implements LanguageElement {
 	public static String LOGIN_MICROSOFT_PARENT = "Parental approval required. Add this account to Family to login.";
 	public static String LOGIN_MICROSOFT_NO_XBOX = "No Xbox account registered";
 	public static String LOGIN_MICROSOFT_NO_MINECRAFT = "You don't own Minecraft on this account.";
-	public static String LOGIN_MICROSOFT_CODE_LINE1 = "To proceed, open up:";
-	public static String LOGIN_MICROSOFT_CODE_LINE2 = "in a browser and type the code:";
+	public static String LOGIN_MICROSOFT_CODE_LINE1 = "To proceed, open this link in a browser:";
+	public static String LOGIN_MICROSOFT_CODE_LINE2 = "...and enter the code below to sign in to Microsoft.";
 	public static String LOGIN_RELOGIN = "You need to re-login to your Microsoft account (token timed out)";
 
 	public static String LOGIN_FAILED = "Failed to complete the login process";
