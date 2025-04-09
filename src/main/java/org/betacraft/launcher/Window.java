@@ -75,6 +75,10 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 
 		// Initialize components
 		loginButton = new JButton(Lang.LOGIN_BUTTON);
+		Dimension dim = loginButton.getPreferredSize();
+		dim.setSize(dim.getWidth()*1.25, dim.getHeight());
+		loginButton.setSize(dim);
+		loginButton.setPreferredSize(dim);
 		playButton = new JButton(Lang.WINDOW_PLAY + " ("+Launcher.currentInstance.name+")");
 		selectedInstanceDisplay = new JLabel("Version: " + Launcher.currentInstance.version);
 		selectVersionButton = new JButton(Lang.WINDOW_SELECT_VERSION);
@@ -296,6 +300,8 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 		dimension.setSize(loginButton.getPreferredSize().getWidth() + nick_input.getPreferredSize().getWidth() + 2 + BottomPanel.paddingx*2, playButton.getPreferredSize().getHeight());
 		playButton.setPreferredSize(dimension);
 		playButton.setSize(dimension);
+		
+	
 		//playButtonWidth = loginButton.getPreferredSize().width + nick_input.getPreferredSize().width + 2;
 		
 
