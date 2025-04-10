@@ -67,7 +67,7 @@ public class SelectServerVersion extends JFrame implements LanguageElement {
 						Launcher.initStartup();
 
 						// Update the button state
-						Window.mainWindow.setStatus(Window.mainWindow.playButton, Lang.WINDOW_PLAY);
+						Window.mainWindow.setStatus(Window.mainWindow.playButton, Lang.WINDOW_PLAY + " ("+Launcher.currentInstance.name+")");
 						Window.mainWindow.playButton.setEnabled(true);
 						new Launcher().launchGame(Launcher.currentInstance, address, mppass);
 					}
