@@ -376,7 +376,7 @@ public class Window extends JFrame implements ActionListener, LanguageElement {
 						boolean success = Launcher.initStartup();
 
 						// Update the button state
-						setStatus(playButton, Lang.WINDOW_PLAY);
+						setStatus(playButton, Lang.WINDOW_PLAY + " ("+Launcher.currentInstance.name+")");
 						playButton.setEnabled(true);
 
 						// Start the wrapper
