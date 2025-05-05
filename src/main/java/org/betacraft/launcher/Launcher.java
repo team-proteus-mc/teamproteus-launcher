@@ -47,7 +47,7 @@ import uk.betacraft.json.lib.MouseFixMacOSJson;
 
 /** Main class */
 public class Launcher {
-	public static String VERSION = "1.09_17"; // TODO Always update this
+	public static String VERSION = "1.2 (BC v1.09_17)"; // TODO Always update this
 
 	public static Instance currentInstance;
 	public static boolean forceUpdate = false;
@@ -231,8 +231,8 @@ public class Launcher {
 
 					loadClasses(path, loader);
 					System.out.println("Launch method: " + meth);
-					Class c = loader.loadClass(meth);
-					Constructor con = c.getConstructor(String.class, String.class, String.class, String.class, String.class, Integer.class, Integer.class, Boolean.class, String.class, String.class, String.class, String.class, String.class, String.class, Image.class, ArrayList.class);
+					Class<?> c = loader.loadClass(meth);
+					Constructor<?> con = c.getConstructor(String.class, String.class, String.class, String.class, String.class, Integer.class, Integer.class, Boolean.class, String.class, String.class, String.class, String.class, String.class, String.class, Image.class, ArrayList.class);
 					con.newInstance(username, currentInstance.name, currentInstance.version, sessionid, currentInstance.gameDir, currentInstance.height, currentInstance.width, currentInstance.RPC, json.getLaunchMethod(), server, mppass, uuid, Lang.WRAP_USER, Lang.WRAP_VERSION, currentInstance.getIcon(), addons);
 				} catch (Exception ex) {
 					ex.printStackTrace();
@@ -260,7 +260,7 @@ public class Launcher {
 		new File(BC.get() + "launcher" + File.separator + "launch-methods").mkdirs();
 		new File(BC.get() + "bin" + File.separator + "natives").mkdirs();
 
-		System.out.println("BetaCraft Launcher JE v" + VERSION + " loading...");
+		System.out.println("Team Proteus Launcher JE v" + VERSION + " loading...");
 		System.out.println("Java version: " + System.getProperty("java.vendor") + ", " + System.getProperty("java.runtime.name") + ", " + System.getProperty("java.runtime.version"));
 		System.out.println("Portable: " + BC.portable);
 		System.out.println("EXE: " + BC.currentPath.getAbsolutePath().endsWith(".exe"));

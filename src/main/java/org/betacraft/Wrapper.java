@@ -167,7 +167,7 @@ public class Wrapper extends Applet implements AppletStub {
 		}  catch (Throwable t) {}
 
 		if (this.discord) {
-			String applicationId = "939918927989973052";
+			String applicationId = "1368676266991026306";
 			DiscordEventHandlers handlers = new DiscordEventHandlers();
 			DiscordRPC.discordInitialize(applicationId, handlers, true);
 
@@ -175,8 +175,8 @@ public class Wrapper extends Applet implements AppletStub {
 			presence.startTimestamp = System.currentTimeMillis() / 1000;
 			presence.state = String.format(VER, version);
 			presence.details = String.format(USR, user);
-			presence.largeImageKey = "logo_betacraft_1024";
-			presence.largeImageText = "Download at betacraft.uk";
+			presence.largeImageKey = "iconlarge";
+			presence.largeImageText = "Join us at discord.gg/eKemcyUKwR";
 			DiscordRPC.discordUpdatePresence(presence);
 			discordThread = new DiscordThread();
 		}

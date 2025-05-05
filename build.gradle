@@ -4,8 +4,8 @@ plugins {
 }
 
 // Gson 2.10 requires Java 7, there's no point in compiling this for Java 5
-targetCompatibility = 7;
-sourceCompatibility = 7;
+targetCompatibility = 8;
+sourceCompatibility = 8;
 
 sourceSets {
     main {
