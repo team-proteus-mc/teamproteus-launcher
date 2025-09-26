@@ -14,6 +14,8 @@ public class BC {
 	// TODO better check this before release
 	public static boolean prerelease = false;
 	public static boolean nightly = false;
+	
+	private static final String path2 = "teamproteus";
 
 	public static boolean portable = false;
 	public static boolean wrapped = false;
@@ -27,22 +29,22 @@ public class BC {
 	}
 
 	public static String windowsPath() {
-		if (portable) return prefBC() + "\\.teamproteus\\";
-		return System.getenv("APPDATA") + "\\.teamproteus\\";
+		if (portable) return prefBC() + "\\."+path2+"\\";
+		return System.getenv("APPDATA") + "\\."+path2+"\\";
 	}
 
 	public static String path() {
 		String folder = null;
 		if (OS.isLinux()) {
-			folder = System.getProperty("user.home") + "/.teamproteus/";
-			if (portable) folder = prefBC() + "/.teamproteus/";
+			folder = System.getProperty("user.home") + "/."+path2+"/";
+			if (portable) folder = prefBC() + "/."+path2+"/";
 		} else if (OS.isMac()) {
-			folder = System.getProperty("user.home") + "/Library/Application Support/betacraft/";
-			if (portable) folder = prefBC() + "/teamproteus/";
+			folder = System.getProperty("user.home") + "/Library/Application Support/"+path2+"/";
+			if (portable) folder = prefBC() + "/"+path2+"/";
 		} else {
 			System.out.println("Your operating system is not supported.");
 			JOptionPane.showMessageDialog(Window.mainWindow, "Your operating system is not supported ;(", "I'm sorry, but", JOptionPane.WARNING_MESSAGE);
-			folder = prefBC() + "/teamproteus/";
+			folder = prefBC() + "/"+path2+"/";
 		}
 
 		File betacraft = new File(folder);
