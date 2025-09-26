@@ -8,8 +8,7 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
-import org.betacraft.launcher.Lang;
-
+import com.github.teamproteus.launcher.Lang;
 import com.google.gson.Gson;
 
 import uk.betacraft.util.WebData;

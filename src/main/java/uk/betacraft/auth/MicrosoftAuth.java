@@ -6,9 +6,9 @@ import java.lang.reflect.Modifier;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import org.betacraft.launcher.Lang;
-import org.betacraft.launcher.Launcher;
-import org.betacraft.launcher.Window;
+import com.github.teamproteus.launcher.Lang;
+import com.github.teamproteus.launcher.Launcher;
+import com.github.teamproteus.launcher.Window;
 
 import uk.betacraft.auth.Credentials.AccountType;
 import uk.betacraft.auth.Request.RequestType;

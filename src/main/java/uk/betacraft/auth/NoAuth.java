@@ -2,9 +2,9 @@ package uk.betacraft.auth;
 
 import java.util.UUID;
 
-import org.betacraft.launcher.Lang;
-import org.betacraft.launcher.Launcher;
-import org.betacraft.launcher.Window;
+import com.github.teamproteus.launcher.Lang;
+import com.github.teamproteus.launcher.Launcher;
+import com.github.teamproteus.launcher.Window;
 
 import uk.betacraft.auth.Credentials.AccountType;
 

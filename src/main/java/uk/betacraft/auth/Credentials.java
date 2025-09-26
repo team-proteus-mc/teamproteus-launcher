@@ -2,8 +2,7 @@ package uk.betacraft.auth;
 
 import java.io.File;
 
-import org.betacraft.launcher.Util;
-
+import com.github.teamproteus.launcher.Util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

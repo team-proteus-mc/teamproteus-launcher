@@ -1,6 +1,6 @@
 package uk.betacraft.auth;
 
-import org.betacraft.launcher.DownloadResult;
+import com.github.teamproteus.launcher.DownloadResult;
 
 public class DownloadResponse extends Response {
 

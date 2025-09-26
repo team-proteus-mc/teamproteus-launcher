@@ -11,8 +11,7 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-import org.betacraft.launcher.Util;
-
+import com.github.teamproteus.launcher.Util;
 import com.google.gson.JsonObject;
 
 /*

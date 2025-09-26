@@ -2,9 +2,9 @@ package uk.betacraft.auth;
 
 import javax.swing.SwingUtilities;
 
-import org.betacraft.launcher.Lang;
-import org.betacraft.launcher.Launcher;
-import org.betacraft.launcher.Window;
+import com.github.teamproteus.launcher.Lang;
+import com.github.teamproteus.launcher.Launcher;
+import com.github.teamproteus.launcher.Window;
 
 public abstract class Authenticator {
 

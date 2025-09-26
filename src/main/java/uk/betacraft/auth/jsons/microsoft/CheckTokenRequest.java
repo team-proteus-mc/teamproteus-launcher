@@ -2,8 +2,7 @@ package uk.betacraft.auth.jsons.microsoft;
 
 import javax.swing.JOptionPane;
 
-import org.betacraft.launcher.Lang;
-
+import com.github.teamproteus.launcher.Lang;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 

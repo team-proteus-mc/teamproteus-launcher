@@ -5,10 +5,10 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import org.betacraft.launcher.BC;
-import org.betacraft.launcher.DownloadResult;
-import org.betacraft.launcher.Lang;
-import org.betacraft.launcher.Util;
+import com.github.teamproteus.launcher.BC;
+import com.github.teamproteus.launcher.DownloadResult;
+import com.github.teamproteus.launcher.Lang;
+import com.github.teamproteus.launcher.Util;
 
 import uk.betacraft.util.WebData;
 
