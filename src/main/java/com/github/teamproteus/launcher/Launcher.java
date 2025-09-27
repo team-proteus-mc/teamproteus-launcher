@@ -407,7 +407,7 @@ public class Launcher {
 			}
 		}
 
-		Release rel = Release.getLatest();
+		Release rel = Release.getReleaseByName(currentInstance.version);
 		ModObject mo = ModsRepository.getMod(rel.getInfo().getVersion());
 		if (mo == null) {
 			if (!rel.getInfo().downloadJson().isPositive() && !rel.getInfo().isCustom()) {
