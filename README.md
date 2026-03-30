@@ -2,7 +2,7 @@
 
 Launcher based off of Betacraft Launcher specifically for the Team Proteus client for the Team Proteus Minecraft server.
 
-- Discord: https://discord.gg/eKemcyUKwR
+- Discord: https://discord.gg/bBucQVMfnX
 
 
 # ORIGINAL README:
